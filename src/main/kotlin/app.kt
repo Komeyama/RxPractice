@@ -1,11 +1,13 @@
 import operators.FromArrayOperatorExample
 import operators.FromCallableOperatorExample
 import operators.JustOperatorExample
+import operators.RangeOperatorExample
 
 fun main() {
     setupJustExample()
     setupFromArrayOperatorExample()
     setupFromCallableOperatorExample()
+    setupRangeOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -24,4 +26,9 @@ private fun setupFromCallableOperatorExample() {
     fromCallableOperatorExample.executeFromCallable()
     Thread.sleep(100L)
     fromCallableOperatorExample.executeFromCallable()
+}
+
+private fun setupRangeOperatorExample() {
+    val rangeOperatorExample = RangeOperatorExample()
+    rangeOperatorExample.executeRange()
 }
