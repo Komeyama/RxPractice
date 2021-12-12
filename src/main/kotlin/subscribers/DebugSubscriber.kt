@@ -2,7 +2,7 @@ package subscribers
 
 import io.reactivex.rxjava3.subscribers.DisposableSubscriber
 
-class DebugSubscriber<T>(private val label: String = "") : DisposableSubscriber<T>() {
+open class DebugSubscriber<T>(private var label: String = "") : DisposableSubscriber<T>() {
 
     override fun onNext(data: T) {
         val threadName = Thread.currentThread().name
