@@ -7,6 +7,7 @@ fun main() {
     setupRangeOperatorExample()
     setupIntervalOperatorExample()
     setupTimeOperatorExample()
+    setupDeferOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -40,4 +41,9 @@ private fun setupIntervalOperatorExample() {
 private fun setupTimeOperatorExample() {
     val intervalOperatorExample = TimerOperatorExample()
     intervalOperatorExample.executeTimer()
+}
+
+private fun setupDeferOperatorExample() {
+    val deferOperatorExample = DeferOperatorExample()
+    deferOperatorExample.executeDefer()
 }
