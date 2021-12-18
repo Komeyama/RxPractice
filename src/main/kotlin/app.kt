@@ -6,6 +6,7 @@ fun main() {
     setupFromCallableOperatorExample()
     setupRangeOperatorExample()
     setupIntervalOperatorExample()
+    setupTimeOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -34,4 +35,9 @@ private fun setupRangeOperatorExample() {
 private fun setupIntervalOperatorExample() {
     val intervalOperatorExample = IntervalOperatorExample()
     intervalOperatorExample.executeInterval()
+}
+
+private fun setupTimeOperatorExample() {
+    val intervalOperatorExample = TimerOperatorExample()
+    intervalOperatorExample.executeTimer()
 }
