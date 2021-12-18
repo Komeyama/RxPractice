@@ -2,7 +2,7 @@ package operators
 
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import subscribers.DebugSubscriber
+import subscribers.TimeDebugSubscriber
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
@@ -27,19 +27,9 @@ class IntervalOperatorExample {
         val threadName = Thread.currentThread().name
         println("label: $label, threadName: $threadName before start time: ${LocalTime.now().format(formatter)}")
 
-        flowable.subscribe(IntervalDebugSubscriber(formatter = formatter))
+        flowable.subscribe(TimeDebugSubscriber(formatter = formatter, label = label))
 
         Thread.sleep(5000L)
         println("label: $label, threadName: $threadName finish time: ${LocalTime.now().format(formatter)}")
-    }
-
-    class IntervalDebugSubscriber<T>(private val formatter: DateTimeFormatter, var label: String = "interval") :
-        DebugSubscriber<T>() {
-
-        override fun onNext(data: T) {
-            val threadName = Thread.currentThread().name
-            val currentTime = LocalTime.now().format(formatter)
-            println("label: $label, threadName: $threadName, time: $currentTime, data: $data")
-        }
     }
 }
