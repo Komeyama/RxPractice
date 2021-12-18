@@ -9,6 +9,7 @@ fun main() {
     setupTimeOperatorExample()
     setupDeferOperatorExample()
     setupEmptyOperatorExample()
+    setupErrorOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -52,4 +53,9 @@ private fun setupDeferOperatorExample() {
 private fun setupEmptyOperatorExample() {
     val emptyOperatorExample = EmptyOperatorExample()
     emptyOperatorExample.executeEmpty()
+}
+
+private fun setupErrorOperatorExample() {
+    val errorOperatorExample = ErrorOperatorExample()
+    errorOperatorExample.executeError()
 }
