@@ -1,16 +1,17 @@
 import operators.*
 
 fun main() {
-//    setupJustExample()
-//    setupFromArrayOperatorExample()
-//    setupFromCallableOperatorExample()
-//    setupRangeOperatorExample()
-//    setupIntervalOperatorExample()
-//    setupTimeOperatorExample()
-//    setupDeferOperatorExample()
-//    setupEmptyOperatorExample()
-//    setupErrorOperatorExample()
+    setupJustExample()
+    setupFromArrayOperatorExample()
+    setupFromCallableOperatorExample()
+    setupRangeOperatorExample()
+    setupIntervalOperatorExample()
+    setupTimeOperatorExample()
+    setupDeferOperatorExample()
+    setupEmptyOperatorExample()
+    setupErrorOperatorExample()
     setupMapOperatorExample()
+    setupFlatMapOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -64,4 +65,11 @@ private fun setupErrorOperatorExample() {
 private fun setupMapOperatorExample() {
     val mapOperatorExample = MapOperatorExample()
     mapOperatorExample.executeMap()
+}
+
+private fun setupFlatMapOperatorExample() {
+    val flatMapOperatorExample = FlatMapOperatorExample()
+    flatMapOperatorExample.executeFlatMapType1()
+    flatMapOperatorExample.executeFlatMapType2()
+    flatMapOperatorExample.executeFlatMapType3()
 }
