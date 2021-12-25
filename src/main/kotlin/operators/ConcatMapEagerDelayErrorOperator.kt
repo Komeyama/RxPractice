@@ -2,33 +2,42 @@ package operators
 
 import io.reactivex.rxjava3.core.Flowable
 import subscribers.DebugSubscriber
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
-class ConcatMapEagerDelayOperatorError {
+class ConcatMapEagerDelayErrorOperator {
 
     /**
      * [Result]
-     * 受け取ったデータから生成されるFlowableはすぐに実行されるが、通知するデータはconcatMapと同様で生成されたFlowableの順となる
-     * threadName: RxComputationThreadPool-1, data: 1640442580247: [1] 0
-     * threadName: RxComputationThreadPool-1, data: 1640442580344: [1] 1
-     * threadName: RxComputationThreadPool-1, data: 1640442580446: [1] 2
-     * threadName: RxComputationThreadPool-1, data: 1640442580249: [2] 0
-     * threadName: RxComputationThreadPool-1, data: 1640442580344: [2] 1
-     * threadName: RxComputationThreadPool-2, data: 1640442580448: [2] 2
-     * threadName: RxComputationThreadPool-2, data: 1640442580249: [3] 0
-     * threadName: RxComputationThreadPool-2, data: 1640442580344: [3] 1
-     * threadName: RxComputationThreadPool-2, data: 1640442580448: [3] 2
+     * isDelayError = falseの場合
+     * threadName: RxComputationThreadPool-1, data: 1640444633921: [1] 0
+     * threadName: RxComputationThreadPool-3, data: 1640444634024: [1] 1
+     * threadName: RxComputationThreadPool-1, data: 1640444634124: [1] 2
+     * threadName: RxComputationThreadPool-1, throwable: java.lang.Exception: concat error!
+     * isDelayError = trueの場合
+     * threadName: RxComputationThreadPool-1, data: 1640444709908: [1] 0
+     * threadName: RxComputationThreadPool-1, data: 1640444710006: [1] 1
+     * threadName: RxComputationThreadPool-1, data: 1640444710104: [1] 2
+     * threadName: RxComputationThreadPool-1, data: 1640444709908: [2] 0
+     * threadName: RxComputationThreadPool-1, data: 1640444709908: [3] 0
+     * threadName: RxComputationThreadPool-1, data: 1640444710006: [3] 1
+     * threadName: RxComputationThreadPool-3, data: 1640444710108: [3] 2
+     * threadName: RxComputationThreadPool-3, throwable: java.lang.Exception: concat error!
      */
-    fun executeConcatMapEager() {
-        val label = "concat_map_eager"
+    fun executeConcatMapEagerDelayError(isDelayError: Boolean = true) {
+        val label = "concat_map_eager_delay_error_delay"
         val flowableJust: Flowable<String> =
             Flowable.range(1, 3)
-                .concatMapEager { sourceData ->
-                    Flowable.interval(100L, TimeUnit.MILLISECONDS).take(3).map { data ->
+                .concatMapEagerDelayError({ sourceData ->
+                    Flowable.interval(100L, TimeUnit.MILLISECONDS).take(3).doOnNext { data ->
+                        if (sourceData == 2 && data == 2L) {
+                            throw Exception("concat map eager error!")
+                        }
+                    }.map { data ->
                         val time = System.currentTimeMillis()
                         "$time: [$sourceData] $data"
                     }
-                }
+                }, isDelayError)
 
         flowableJust.subscribe(DebugSubscriber(label = label))
         Thread.sleep(1000L)

@@ -14,6 +14,7 @@ fun main() {
     setupFlatMapOperatorExample()
     setupConcatMapOperatorExample()
     setupConcatMapEagerExample()
+    setupConcatMapEagerDelayErrorExample()
 }
 
 private fun setupJustExample() {
@@ -84,4 +85,9 @@ private fun setupConcatMapOperatorExample() {
 private fun setupConcatMapEagerExample() {
     val concatMapEagerOperatorExample = ConcatMapEagerOperatorExample()
     concatMapEagerOperatorExample.executeConcatMapEager()
+}
+
+private fun setupConcatMapEagerDelayErrorExample() {
+    val concatMapEagerDelayErrorOperator = ConcatMapEagerDelayErrorOperator()
+    concatMapEagerDelayErrorOperator.executeConcatMapEagerDelayError()
 }
