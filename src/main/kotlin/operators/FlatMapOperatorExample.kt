@@ -28,24 +28,26 @@ class FlatMapOperatorExample {
 
     /**
      * [Result]
-     * threadName: RxComputationThreadPool-1, data: [1] + 0
-     * threadName: RxComputationThreadPool-2, data: [2] + 0
-     * threadName: RxComputationThreadPool-3, data: [3] + 0
-     * threadName: RxComputationThreadPool-1, data: [1] + 1
-     * threadName: RxComputationThreadPool-3, data: [3] + 1
-     * threadName: RxComputationThreadPool-3, data: [2] + 1
-     * threadName: RxComputationThreadPool-1, data: [1] + 2
-     * threadName: RxComputationThreadPool-1, data: [3] + 2
-     * threadName: RxComputationThreadPool-2, data: [2] + 2
-     * threadName: RxComputationThreadPool-2 completed!
+     * threadName: RxComputationThreadPool-1, data: 1640422048239: [1] 0
+     * threadName: RxComputationThreadPool-3, data: 1640422048239: [3] 0
+     * threadName: RxComputationThreadPool-2, data: 1640422048239: [2] 0
+     * threadName: RxComputationThreadPool-1, data: 1640422048339: [1] 1
+     * threadName: RxComputationThreadPool-1, data: 1640422048339: [2] 1
+     * threadName: RxComputationThreadPool-1, data: 1640422048339: [3] 1
+     * threadName: RxComputationThreadPool-1, data: 1640422048438: [1] 2
+     * threadName: RxComputationThreadPool-3, data: 1640422048439: [3] 2
+     * threadName: RxComputationThreadPool-3, data: 1640422048439: [2] 2
      */
     fun executeFlatMapType2() {
         val label = "flat_map_type2"
         val flowableJust: Flowable<String> =
             Flowable.range(1, 3)
                 .flatMap(
-                    { Flowable.interval(100L, TimeUnit.MILLISECONDS).take(3) },
-                    { sourceData, newData -> "[$sourceData] + $newData" })
+                    { Flowable.interval(100L, TimeUnit.MILLISECONDS).take(3) }
+                ) { sourceData, newData ->
+                    val time = System.currentTimeMillis()
+                    "$time: [$sourceData] $newData"
+                }
 
         flowableJust.subscribe(DebugSubscriber(label = label))
         Thread.sleep(1000L)
