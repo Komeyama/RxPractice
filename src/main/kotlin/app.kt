@@ -13,6 +13,7 @@ fun main() {
     setupMapOperatorExample()
     setupFlatMapOperatorExample()
     setupConcatMapOperatorExample()
+    setupConcatMapEagerExample()
 }
 
 private fun setupJustExample() {
@@ -78,4 +79,9 @@ private fun setupFlatMapOperatorExample() {
 private fun setupConcatMapOperatorExample() {
     val concatMapOperatorExample = ConcatMapOperatorExample()
     concatMapOperatorExample.executeConcatMap()
+}
+
+private fun setupConcatMapEagerExample() {
+    val concatMapEagerOperatorExample = ConcatMapEagerOperatorExample()
+    concatMapEagerOperatorExample.executeConcatMapEager()
 }
