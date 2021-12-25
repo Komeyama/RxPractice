@@ -12,6 +12,7 @@ fun main() {
     setupErrorOperatorExample()
     setupMapOperatorExample()
     setupFlatMapOperatorExample()
+    setupConcatMapOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -72,4 +73,9 @@ private fun setupFlatMapOperatorExample() {
     flatMapOperatorExample.executeFlatMapType1()
     flatMapOperatorExample.executeFlatMapType2()
     flatMapOperatorExample.executeFlatMapType3()
+}
+
+private fun setupConcatMapOperatorExample() {
+    val concatMapOperatorExample = ConcatMapOperatorExample()
+    concatMapOperatorExample.executeConcatMap()
 }
