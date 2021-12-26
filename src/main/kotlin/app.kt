@@ -15,6 +15,7 @@ fun main() {
     setupConcatMapOperatorExample()
     setupConcatMapEagerExample()
     setupConcatMapEagerDelayErrorExample()
+    setupBufferOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -90,4 +91,10 @@ private fun setupConcatMapEagerExample() {
 private fun setupConcatMapEagerDelayErrorExample() {
     val concatMapEagerDelayErrorOperator = ConcatMapEagerDelayErrorOperator()
     concatMapEagerDelayErrorOperator.executeConcatMapEagerDelayError()
+}
+
+private fun setupBufferOperatorExample() {
+    val bufferOperatorExample = BufferOperatorExample()
+    bufferOperatorExample.executeBufferType1()
+    bufferOperatorExample.executeBufferType2()
 }

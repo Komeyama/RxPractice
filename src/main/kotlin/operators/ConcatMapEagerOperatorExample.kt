@@ -21,7 +21,7 @@ class ConcatMapEagerOperatorExample {
      */
     fun executeConcatMapEager() {
         val label = "concat_map_eager"
-        val flowableJust: Flowable<String> =
+        val flowable: Flowable<String> =
             Flowable.range(1, 3)
                 .concatMapEager { sourceData ->
                     Flowable.interval(100L, TimeUnit.MILLISECONDS).take(3).map { data ->
@@ -30,7 +30,7 @@ class ConcatMapEagerOperatorExample {
                     }
                 }
 
-        flowableJust.subscribe(DebugSubscriber(label = label))
+        flowable.subscribe(DebugSubscriber(label = label))
         Thread.sleep(1000L)
     }
 }
