@@ -3,7 +3,7 @@ package subscribers
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class TimeDebugSubscriber<T>(private val formatter: DateTimeFormatter, var label: String = "time") :
+class DebugTimeSubscriber<T>(private val formatter: DateTimeFormatter, var label: String = "time") :
     DebugSubscriber<T>() {
 
     override fun onNext(data: T) {
