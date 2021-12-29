@@ -16,6 +16,7 @@ fun main() {
     setupConcatMapEagerExample()
     setupConcatMapEagerDelayErrorExample()
     setupBufferOperatorExample()
+    setupToListOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -97,4 +98,9 @@ private fun setupBufferOperatorExample() {
     val bufferOperatorExample = BufferOperatorExample()
     bufferOperatorExample.executeBufferType1()
     bufferOperatorExample.executeBufferType2()
+}
+
+private fun setupToListOperatorExample() {
+    val toListOperatorExample = ToListOperatorExample()
+    toListOperatorExample.executeToList()
 }
