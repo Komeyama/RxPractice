@@ -6,7 +6,7 @@ import subscribers.DebugSingleObserver
 
 class ToMapOperatorExample {
 
-    fun executeToList() {
+    fun executeToMap() {
         val label = "to_map"
         val single: Single<Map<Int, String>> =
             Flowable.just("A", "B", "C", "D", "E")

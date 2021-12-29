@@ -108,5 +108,5 @@ private fun setupToListOperatorExample() {
 
 private fun setupToMapOperatorExample() {
     val toMapOperationException = ToMapOperatorExample()
-    toMapOperationException.executeToList()
+    toMapOperationException.executeToMap()
 }
