@@ -6,6 +6,10 @@ import subscribers.DebugSingleObserver
 
 class ToListOperatorExample {
 
+    /**
+     * [Result]
+     * threadName: main, data: [A, B, C, D, E]
+     */
     fun executeToList() {
         val label = "to_list"
         val single: Single<List<String>> =

@@ -6,6 +6,10 @@ import subscribers.DebugSingleObserver
 
 class ToMapOperatorExample {
 
+    /**
+     * [Result]
+     * threadName: main, data: {65=A, 66=B, 67=C, 68=D, 69=E}
+     */
     fun executeToMap() {
         val label = "to_map"
         val single: Single<Map<Int, String>> =

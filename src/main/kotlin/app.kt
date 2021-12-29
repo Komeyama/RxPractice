@@ -18,6 +18,7 @@ fun main() {
     setupBufferOperatorExample()
     setupToListOperatorExample()
     setupToMapOperatorExample()
+    setupToMultiMapOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -109,4 +110,9 @@ private fun setupToListOperatorExample() {
 private fun setupToMapOperatorExample() {
     val toMapOperationException = ToMapOperatorExample()
     toMapOperationException.executeToMap()
+}
+
+private fun setupToMultiMapOperatorExample() {
+    val toMultiMapOperatorExample = ToMultiMapOperatorExample()
+    toMultiMapOperatorExample.executeToMultiMapOperator()
 }
