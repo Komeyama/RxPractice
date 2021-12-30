@@ -1,25 +1,26 @@
 import operators.*
 
 fun main() {
-    setupJustExample()
-    setupFromArrayOperatorExample()
-    setupFromCallableOperatorExample()
-    setupRangeOperatorExample()
-    setupIntervalOperatorExample()
-    setupTimeOperatorExample()
-    setupDeferOperatorExample()
-    setupEmptyOperatorExample()
-    setupErrorOperatorExample()
-    setupMapOperatorExample()
-    setupFlatMapOperatorExample()
-    setupConcatMapOperatorExample()
-    setupConcatMapEagerExample()
-    setupConcatMapEagerDelayErrorExample()
-    setupBufferOperatorExample()
-    setupToListOperatorExample()
-    setupToMapOperatorExample()
-    setupToMultiMapOperatorExample()
-    setupFilterOperatorExample()
+//    setupJustExample()
+//    setupFromArrayOperatorExample()
+//    setupFromCallableOperatorExample()
+//    setupRangeOperatorExample()
+//    setupIntervalOperatorExample()
+//    setupTimeOperatorExample()
+//    setupDeferOperatorExample()
+//    setupEmptyOperatorExample()
+//    setupErrorOperatorExample()
+//    setupMapOperatorExample()
+//    setupFlatMapOperatorExample()
+//    setupConcatMapOperatorExample()
+//    setupConcatMapEagerExample()
+//    setupConcatMapEagerDelayErrorExample()
+//    setupBufferOperatorExample()
+//    setupToListOperatorExample()
+//    setupToMapOperatorExample()
+//    setupToMultiMapOperatorExample()
+//    setupFilterOperatorExample()
+    setupDistinctOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -121,4 +122,9 @@ private fun setupToMultiMapOperatorExample() {
 private fun setupFilterOperatorExample() {
     val filterOperatorExample = FilterOperatorExample()
     filterOperatorExample.executeFilter()
+}
+
+private fun setupDistinctOperatorExample() {
+    val distinctOperatorExample = DistinctOperatorExample()
+    distinctOperatorExample.executeDistinct()
 }
