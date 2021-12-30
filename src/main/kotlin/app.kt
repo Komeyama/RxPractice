@@ -22,6 +22,7 @@ fun main() {
     setupFilterOperatorExample()
     setupDistinctOperatorExample()
     setupDistinctUntilChangedOperatorExample()
+    setupTakeOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -134,4 +135,9 @@ private fun setupDistinctUntilChangedOperatorExample() {
     val distinctUntilChangedOperatorExample = DistinctUntilChangedOperatorExample()
     distinctUntilChangedOperatorExample.executeDistinctUntilChangedType1()
     distinctUntilChangedOperatorExample.executeDistinctUntilChangedType2()
+}
+
+private fun setupTakeOperatorExample() {
+    val takeOperatorExample = TakeOperatorExample()
+    takeOperatorExample.executeTake()
 }
