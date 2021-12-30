@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Flowable
 import subscribers.DebugSubscriber
 import java.util.concurrent.TimeUnit
 
-class SkipOperatorExample {
+class SkipUntilOperatorExample {
 
     /**
      * [Result]
@@ -12,11 +12,11 @@ class SkipOperatorExample {
      * threadName: RxComputationThreadPool-1, data: 4
      * threadName: RxComputationThreadPool-1, data: 5
      */
-    fun executeSkip() {
-        val label = "skip"
+    fun executeSkipUntil() {
+        val label = "skip_until"
         val flowable: Flowable<Long> =
             Flowable.interval(300L, TimeUnit.MILLISECONDS)
-                .skip(3)
+                .skipUntil(Flowable.timer(1000L, TimeUnit.MILLISECONDS))
 
         flowable.subscribe(DebugSubscriber(label = label))
         Thread.sleep(2000L)
