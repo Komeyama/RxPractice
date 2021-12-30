@@ -132,5 +132,6 @@ private fun setupDistinctOperatorExample() {
 
 private fun setupDistinctUntilChangedOperatorExample() {
     val distinctUntilChangedOperatorExample = DistinctUntilChangedOperatorExample()
-    distinctUntilChangedOperatorExample.executeDistinctUntilChanged()
+    distinctUntilChangedOperatorExample.executeDistinctUntilChangedType1()
+    distinctUntilChangedOperatorExample.executeDistinctUntilChangedType2()
 }
