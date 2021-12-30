@@ -25,7 +25,8 @@ fun main() {
     setupTakeOperatorExample()
     setupTakeUntilOperatorExample()
     setupTakeWhileOperatorExample()
-    seupTakeLastOperatorExample()
+    setupTakeLastOperatorExample()
+    setupSkipOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -156,8 +157,13 @@ private fun setupTakeWhileOperatorExample() {
     takeWhileOperatorExample.executeTakeWhile()
 }
 
-private fun seupTakeLastOperatorExample() {
+private fun setupTakeLastOperatorExample() {
     val takeLastOperatorExample = TakeLastOperatorExample()
     takeLastOperatorExample.executeTakeLastType1()
     takeLastOperatorExample.executeTakeLastType2()
+}
+
+private fun setupSkipOperatorExample() {
+    val skipOperatorExample = SkipOperatorExample()
+    skipOperatorExample.executeSkip()
 }
