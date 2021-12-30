@@ -29,6 +29,7 @@ fun main() {
     setupSkipOperatorExample()
     setupSkipUntilOperatorExample()
     setupSkipWhileOperatorExample()
+    setupSkipLastOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -178,4 +179,9 @@ private fun setupSkipUntilOperatorExample() {
 private fun setupSkipWhileOperatorExample() {
     val skipWhileOperatorExample = SkipWhileOperatorExample()
     skipWhileOperatorExample.executeSkipWhile()
+}
+
+private fun setupSkipLastOperatorExample() {
+    val skipLastOperatorExample = SkipLastOperatorExample()
+    skipLastOperatorExample.executeSkipLast()
 }
