@@ -1,30 +1,31 @@
 import operators.*
 
 fun main() {
-    setupJustExample()
-    setupFromArrayOperatorExample()
-    setupFromCallableOperatorExample()
-    setupRangeOperatorExample()
-    setupIntervalOperatorExample()
-    setupTimeOperatorExample()
-    setupDeferOperatorExample()
-    setupEmptyOperatorExample()
-    setupErrorOperatorExample()
-    setupMapOperatorExample()
-    setupFlatMapOperatorExample()
-    setupConcatMapOperatorExample()
-    setupConcatMapEagerExample()
-    setupConcatMapEagerDelayErrorExample()
-    setupBufferOperatorExample()
-    setupToListOperatorExample()
-    setupToMapOperatorExample()
-    setupToMultiMapOperatorExample()
-    setupFilterOperatorExample()
-    setupDistinctOperatorExample()
-    setupDistinctUntilChangedOperatorExample()
-    setupTakeOperatorExample()
-    setupTakeUntilOperatorExample()
-    setupTakeWhileOperatorExample()
+//    setupJustExample()
+//    setupFromArrayOperatorExample()
+//    setupFromCallableOperatorExample()
+//    setupRangeOperatorExample()
+//    setupIntervalOperatorExample()
+//    setupTimeOperatorExample()
+//    setupDeferOperatorExample()
+//    setupEmptyOperatorExample()
+//    setupErrorOperatorExample()
+//    setupMapOperatorExample()
+//    setupFlatMapOperatorExample()
+//    setupConcatMapOperatorExample()
+//    setupConcatMapEagerExample()
+//    setupConcatMapEagerDelayErrorExample()
+//    setupBufferOperatorExample()
+//    setupToListOperatorExample()
+//    setupToMapOperatorExample()
+//    setupToMultiMapOperatorExample()
+//    setupFilterOperatorExample()
+//    setupDistinctOperatorExample()
+//    setupDistinctUntilChangedOperatorExample()
+//    setupTakeOperatorExample()
+//    setupTakeUntilOperatorExample()
+//    setupTakeWhileOperatorExample()
+    seupTakeLastOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -153,4 +154,9 @@ private fun setupTakeUntilOperatorExample() {
 private fun setupTakeWhileOperatorExample() {
     val takeWhileOperatorExample = TakeWhileOperatorExample()
     takeWhileOperatorExample.executeTakeWhile()
+}
+
+private fun seupTakeLastOperatorExample() {
+    val takeLastOperatorExample = TakeLastOperatorExample()
+    takeLastOperatorExample.executeTakeLast()
 }
