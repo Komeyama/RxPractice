@@ -19,6 +19,7 @@ fun main() {
     setupToListOperatorExample()
     setupToMapOperatorExample()
     setupToMultiMapOperatorExample()
+    setupFilterOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -115,4 +116,9 @@ private fun setupToMapOperatorExample() {
 private fun setupToMultiMapOperatorExample() {
     val toMultiMapOperatorExample = ToMultiMapOperatorExample()
     toMultiMapOperatorExample.executeToMultiMapOperator()
+}
+
+private fun setupFilterOperatorExample() {
+    val filterOperatorExample = FilterOperatorExample()
+    filterOperatorExample.executeFilter()
 }
