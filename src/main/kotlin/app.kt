@@ -24,6 +24,7 @@ fun main() {
     setupDistinctUntilChangedOperatorExample()
     setupTakeOperatorExample()
     setupTakeUntilOperatorExample()
+    setupTakeWhileOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -147,4 +148,9 @@ private fun setupTakeUntilOperatorExample() {
     val takeUntilOperatorExample = TakeUntilOperatorExample()
     takeUntilOperatorExample.executeTakeUntilType1()
     takeUntilOperatorExample.executeTakeUntilType2()
+}
+
+private fun setupTakeWhileOperatorExample() {
+    val takeWhileOperatorExample = TakeWhileOperatorExample()
+    takeWhileOperatorExample.executeTakeWhile()
 }
