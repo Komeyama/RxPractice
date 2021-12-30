@@ -30,6 +30,7 @@ fun main() {
     setupSkipUntilOperatorExample()
     setupSkipWhileOperatorExample()
     setupSkipLastOperatorExample()
+    setupThrottleFirstOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -184,4 +185,9 @@ private fun setupSkipWhileOperatorExample() {
 private fun setupSkipLastOperatorExample() {
     val skipLastOperatorExample = SkipLastOperatorExample()
     skipLastOperatorExample.executeSkipLast()
+}
+
+private fun setupThrottleFirstOperatorExample() {
+    val throttleFirstOperatorExample = ThrottleFirstOperatorExample()
+    throttleFirstOperatorExample.executeThrottleFirst()
 }
