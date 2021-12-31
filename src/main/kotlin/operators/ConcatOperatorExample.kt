@@ -16,6 +16,7 @@ class ConcatOperatorExample {
      * threadName: RxComputationThreadPool-2, data: 100
      * threadName: RxComputationThreadPool-2, data: 101
      * threadName: RxComputationThreadPool-2 completed!
+     * 第一引数、第二引数・・・の順に処理と通知が行われる。
      */
     fun executeConcat() {
         val label = "concat"

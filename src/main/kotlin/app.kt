@@ -36,6 +36,7 @@ fun main() {
     setupElementAtOperatorExample()
     setupMergeOperatorExample()
     setupConcatOperatorExample()
+    setupConcatEagerOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -220,4 +221,9 @@ private fun setupMergeOperatorExample() {
 private fun setupConcatOperatorExample() {
     val concatOperatorExample = ConcatOperatorExample()
     concatOperatorExample.executeConcat()
+}
+
+private fun setupConcatEagerOperatorExample() {
+    val concatEagerOperatorExample = ConcatEagerOperatorExample()
+    concatEagerOperatorExample.executeConcatEager()
 }
