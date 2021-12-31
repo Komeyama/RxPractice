@@ -32,6 +32,7 @@ fun main() {
     setupSkipLastOperatorExample()
     setupThrottleFirstOperatorExample()
     setupThrottleLastOperatorExample()
+    setupThrottleWithTimeoutOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -196,4 +197,9 @@ private fun setupThrottleFirstOperatorExample() {
 private fun setupThrottleLastOperatorExample() {
     val throttleLastOperatorExample = ThrottleLastOperatorExample()
     throttleLastOperatorExample.executeThrottleLast()
+}
+
+private fun setupThrottleWithTimeoutOperatorExample() {
+    val throttleWithTimeoutOperatorExample = ThrottleWithTimeoutOperatorExample()
+    throttleWithTimeoutOperatorExample.executeThrottleWithTimeout()
 }
