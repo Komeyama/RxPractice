@@ -39,6 +39,7 @@ fun main() {
     setupConcatEagerOperatorExample()
     setupStartWithOperatorExample()
     setupZipOperatorExample()
+    setupCombineLatestOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -240,4 +241,11 @@ private fun setupZipOperatorExample() {
     zipOperatorExample.executeZipType1()
     zipOperatorExample.executeZipType2()
     zipOperatorExample.executeZipType3()
+}
+
+private fun setupCombineLatestOperatorExample() {
+    val combineLatestOperatorExample = CombineLatestOperatorExample()
+    combineLatestOperatorExample.executeCombineLatestType1()
+    combineLatestOperatorExample.executeCombineLatestType2()
+    combineLatestOperatorExample.executeCombineLatestType3()
 }
