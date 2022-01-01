@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit
 
 class ConcatMapOperatorExample {
 
-
     /**
      * [Result]
      * threadName: RxComputationThreadPool-1, data: 1640420863136: [1] 0
@@ -33,5 +32,4 @@ class ConcatMapOperatorExample {
         flowable.subscribe(DebugSubscriber(label = label))
         Thread.sleep(1000L)
     }
-
 }

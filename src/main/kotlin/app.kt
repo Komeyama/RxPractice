@@ -37,6 +37,7 @@ fun main() {
     setupMergeOperatorExample()
     setupConcatOperatorExample()
     setupConcatEagerOperatorExample()
+    setupStartWithOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -226,4 +227,9 @@ private fun setupConcatOperatorExample() {
 private fun setupConcatEagerOperatorExample() {
     val concatEagerOperatorExample = ConcatEagerOperatorExample()
     concatEagerOperatorExample.executeConcatEager()
+}
+
+private fun setupStartWithOperatorExample() {
+    val startWithOperatorExample = StartWithOperatorExample()
+    startWithOperatorExample.executeStartWith()
 }
