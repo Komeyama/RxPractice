@@ -38,6 +38,7 @@ fun main() {
     setupConcatOperatorExample()
     setupConcatEagerOperatorExample()
     setupStartWithOperatorExample()
+    setupZipOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -232,4 +233,11 @@ private fun setupConcatEagerOperatorExample() {
 private fun setupStartWithOperatorExample() {
     val startWithOperatorExample = StartWithOperatorExample()
     startWithOperatorExample.executeStartWith()
+}
+
+private fun setupZipOperatorExample() {
+    val zipOperatorExample = ZipOperatorExample()
+    zipOperatorExample.executeZipType1()
+    zipOperatorExample.executeZipType2()
+    zipOperatorExample.executeZipType3()
 }
