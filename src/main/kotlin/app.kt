@@ -43,6 +43,7 @@ fun main() {
     setupIsEmptyOperatoryExample()
     setupContainsOperatorExample()
     setupAllOperatorExample()
+    setupSequenceEqualOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -266,4 +267,9 @@ private fun setupContainsOperatorExample() {
 private fun setupAllOperatorExample() {
     val allOperatorExample =  AllOperatorExample()
     allOperatorExample.executeAll()
+}
+
+private fun setupSequenceEqualOperatorExample() {
+    val sequenceEqualOperatorExample = SequenceEqualOperatorExample()
+    sequenceEqualOperatorExample.executeSequenceEqual()
 }
