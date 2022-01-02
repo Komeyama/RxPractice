@@ -62,6 +62,7 @@ fun main() {
 
     //　データ集計系オペレータ
     setupReduceOperatorExample()
+    setupScanOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -300,5 +301,9 @@ private fun setupCountOperatorExample() {
 private fun setupReduceOperatorExample() {
     val reduceOperatorExample = ReduceOperatorExample()
     reduceOperatorExample.executeReduce()
+}
 
+private fun setupScanOperatorExample() {
+    val scanOperatorExample = ScanOperatorExample()
+    scanOperatorExample.executeScan()
 }
