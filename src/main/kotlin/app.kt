@@ -42,6 +42,7 @@ fun main() {
     setupCombineLatestOperatorExample()
     setupIsEmptyOperatoryExample()
     setupContainsOperatorExample()
+    setupAllOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -260,4 +261,9 @@ private fun setupIsEmptyOperatoryExample() {
 private fun setupContainsOperatorExample() {
     val containsOperatorExample = ContainsOperatorExample()
     containsOperatorExample.executeContains()
+}
+
+private fun setupAllOperatorExample() {
+    val allOperatorExample =  AllOperatorExample()
+    allOperatorExample.executeAll()
 }
