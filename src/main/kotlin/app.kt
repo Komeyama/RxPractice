@@ -1,6 +1,11 @@
-import operators.*
+import operators.combine.*
+import operators.conversion.*
+import operators.generation.*
+import operators.restriction.*
+import operators.state.*
 
 fun main() {
+    // データ生成系オペレータ
     setupJustExample()
     setupFromArrayOperatorExample()
     setupFromCallableOperatorExample()
@@ -10,6 +15,8 @@ fun main() {
     setupDeferOperatorExample()
     setupEmptyOperatorExample()
     setupErrorOperatorExample()
+
+    // データ変換系オペレータ
     setupMapOperatorExample()
     setupFlatMapOperatorExample()
     setupConcatMapOperatorExample()
@@ -19,6 +26,8 @@ fun main() {
     setupToListOperatorExample()
     setupToMapOperatorExample()
     setupToMultiMapOperatorExample()
+
+    // データ制限系オペレータ
     setupFilterOperatorExample()
     setupDistinctOperatorExample()
     setupDistinctUntilChangedOperatorExample()
@@ -34,12 +43,16 @@ fun main() {
     setupThrottleLastOperatorExample()
     setupThrottleWithTimeoutOperatorExample()
     setupElementAtOperatorExample()
+
+    // Flowable/Observable結合系オペレータ
     setupMergeOperatorExample()
     setupConcatOperatorExample()
     setupConcatEagerOperatorExample()
     setupStartWithOperatorExample()
     setupZipOperatorExample()
     setupCombineLatestOperatorExample()
+
+    // Flowable/Observableの状態通知系オペレータ
     setupIsEmptyOperatoryExample()
     setupContainsOperatorExample()
     setupAllOperatorExample()
@@ -266,7 +279,7 @@ private fun setupContainsOperatorExample() {
 }
 
 private fun setupAllOperatorExample() {
-    val allOperatorExample =  AllOperatorExample()
+    val allOperatorExample = AllOperatorExample()
     allOperatorExample.executeAll()
 }
 
