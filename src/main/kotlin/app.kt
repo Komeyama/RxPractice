@@ -41,6 +41,7 @@ fun main() {
     setupZipOperatorExample()
     setupCombineLatestOperatorExample()
     setupIsEmptyOperatoryExample()
+    setupContainsOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -254,4 +255,9 @@ private fun setupCombineLatestOperatorExample() {
 private fun setupIsEmptyOperatoryExample() {
     val isEmptyOperatoryExample = IsEmptyOperatoryExample()
     isEmptyOperatoryExample.executeEmpty()
+}
+
+private fun setupContainsOperatorExample() {
+    val containsOperatorExample = ContainsOperatorExample()
+    containsOperatorExample.executeContains()
 }
