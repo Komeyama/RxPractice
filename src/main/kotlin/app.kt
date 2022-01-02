@@ -4,6 +4,7 @@ import operators.conversion.*
 import operators.generation.*
 import operators.restriction.*
 import operators.state.*
+import operators.utility.RepeatOperatorExample
 
 fun main() {
     // データ生成系オペレータ
@@ -63,6 +64,9 @@ fun main() {
     //　データ集計系オペレータ
     setupReduceOperatorExample()
     setupScanOperatorExample()
+
+    //　ユーティリティ系オペレータ
+    setupRepeatOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -306,4 +310,9 @@ private fun setupReduceOperatorExample() {
 private fun setupScanOperatorExample() {
     val scanOperatorExample = ScanOperatorExample()
     scanOperatorExample.executeScan()
+}
+
+private fun setupRepeatOperatorExample() {
+    val repeatOperatorExample = RepeatOperatorExample()
+    repeatOperatorExample.executeRepeat()
 }

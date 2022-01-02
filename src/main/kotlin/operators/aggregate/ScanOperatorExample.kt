@@ -7,7 +7,13 @@ class ScanOperatorExample {
 
     /**
      * [Result]
+     * threadName: main, data: 0
+     * threadName: main, data: 1
+     * threadName: main, data: 11
+     * threadName: main, data: 111
+     * threadName: main, data: 1111
      * threadName: main, data: 11111
+     * threadName: main completed!
      */
     fun executeScan() {
         val label = "scan"
