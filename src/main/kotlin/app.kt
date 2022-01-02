@@ -1,3 +1,4 @@
+import operators.aggregate.*
 import operators.combine.*
 import operators.conversion.*
 import operators.generation.*
@@ -58,6 +59,9 @@ fun main() {
     setupAllOperatorExample()
     setupSequenceEqualOperatorExample()
     setupCountOperatorExample()
+
+    //　データ集計系オペレータ
+    setupReduceOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -291,4 +295,10 @@ private fun setupSequenceEqualOperatorExample() {
 private fun setupCountOperatorExample() {
     val countOperatorExample = CountOperatorExample()
     countOperatorExample.executeCount()
+}
+
+private fun setupReduceOperatorExample() {
+    val reduceOperatorExample = ReduceOperatorExample()
+    reduceOperatorExample.executeReduce()
+
 }
