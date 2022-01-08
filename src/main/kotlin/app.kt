@@ -5,68 +5,70 @@ import operators.generation.*
 import operators.restriction.*
 import operators.state.*
 import operators.utility.RepeatOperatorExample
+import operators.utility.RepeatUntilOperatorExample
 
 fun main() {
-    // データ生成系オペレータ
-    setupJustExample()
-    setupFromArrayOperatorExample()
-    setupFromCallableOperatorExample()
-    setupRangeOperatorExample()
-    setupIntervalOperatorExample()
-    setupTimeOperatorExample()
-    setupDeferOperatorExample()
-    setupEmptyOperatorExample()
-    setupErrorOperatorExample()
-
-    // データ変換系オペレータ
-    setupMapOperatorExample()
-    setupFlatMapOperatorExample()
-    setupConcatMapOperatorExample()
-    setupConcatMapEagerExample()
-    setupConcatMapEagerDelayErrorExample()
-    setupBufferOperatorExample()
-    setupToListOperatorExample()
-    setupToMapOperatorExample()
-    setupToMultiMapOperatorExample()
-
-    // データ制限系オペレータ
-    setupFilterOperatorExample()
-    setupDistinctOperatorExample()
-    setupDistinctUntilChangedOperatorExample()
-    setupTakeOperatorExample()
-    setupTakeUntilOperatorExample()
-    setupTakeWhileOperatorExample()
-    setupTakeLastOperatorExample()
-    setupSkipOperatorExample()
-    setupSkipUntilOperatorExample()
-    setupSkipWhileOperatorExample()
-    setupSkipLastOperatorExample()
-    setupThrottleFirstOperatorExample()
-    setupThrottleLastOperatorExample()
-    setupThrottleWithTimeoutOperatorExample()
-    setupElementAtOperatorExample()
-
-    // Flowable/Observable結合系オペレータ
-    setupMergeOperatorExample()
-    setupConcatOperatorExample()
-    setupConcatEagerOperatorExample()
-    setupStartWithOperatorExample()
-    setupZipOperatorExample()
-    setupCombineLatestOperatorExample()
-
-    // Flowable/Observableの状態通知系オペレータ
-    setupIsEmptyOperatoryExample()
-    setupContainsOperatorExample()
-    setupAllOperatorExample()
-    setupSequenceEqualOperatorExample()
-    setupCountOperatorExample()
-
-    //　データ集計系オペレータ
-    setupReduceOperatorExample()
-    setupScanOperatorExample()
-
-    //　ユーティリティ系オペレータ
-    setupRepeatOperatorExample()
+//    // データ生成系オペレータ
+//    setupJustExample()
+//    setupFromArrayOperatorExample()
+//    setupFromCallableOperatorExample()
+//    setupRangeOperatorExample()
+//    setupIntervalOperatorExample()
+//    setupTimeOperatorExample()
+//    setupDeferOperatorExample()
+//    setupEmptyOperatorExample()
+//    setupErrorOperatorExample()
+//
+//    // データ変換系オペレータ
+//    setupMapOperatorExample()
+//    setupFlatMapOperatorExample()
+//    setupConcatMapOperatorExample()
+//    setupConcatMapEagerExample()
+//    setupConcatMapEagerDelayErrorExample()
+//    setupBufferOperatorExample()
+//    setupToListOperatorExample()
+//    setupToMapOperatorExample()
+//    setupToMultiMapOperatorExample()
+//
+//    // データ制限系オペレータ
+//    setupFilterOperatorExample()
+//    setupDistinctOperatorExample()
+//    setupDistinctUntilChangedOperatorExample()
+//    setupTakeOperatorExample()
+//    setupTakeUntilOperatorExample()
+//    setupTakeWhileOperatorExample()
+//    setupTakeLastOperatorExample()
+//    setupSkipOperatorExample()
+//    setupSkipUntilOperatorExample()
+//    setupSkipWhileOperatorExample()
+//    setupSkipLastOperatorExample()
+//    setupThrottleFirstOperatorExample()
+//    setupThrottleLastOperatorExample()
+//    setupThrottleWithTimeoutOperatorExample()
+//    setupElementAtOperatorExample()
+//
+//    // Flowable/Observable結合系オペレータ
+//    setupMergeOperatorExample()
+//    setupConcatOperatorExample()
+//    setupConcatEagerOperatorExample()
+//    setupStartWithOperatorExample()
+//    setupZipOperatorExample()
+//    setupCombineLatestOperatorExample()
+//
+//    // Flowable/Observableの状態通知系オペレータ
+//    setupIsEmptyOperatoryExample()
+//    setupContainsOperatorExample()
+//    setupAllOperatorExample()
+//    setupSequenceEqualOperatorExample()
+//    setupCountOperatorExample()
+//
+//    //　データ集計系オペレータ
+//    setupReduceOperatorExample()
+//    setupScanOperatorExample()
+//
+//    //　ユーティリティ系オペレータ
+//    setupRepeatOperatorExample()
+    setupRepeatUntilOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -315,4 +317,9 @@ private fun setupScanOperatorExample() {
 private fun setupRepeatOperatorExample() {
     val repeatOperatorExample = RepeatOperatorExample()
     repeatOperatorExample.executeRepeat()
+}
+
+private fun setupRepeatUntilOperatorExample() {
+    val repeatUntilOperatorExample = RepeatUntilOperatorExample()
+    repeatUntilOperatorExample.executeRepeatUntil()
 }

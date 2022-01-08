@@ -20,11 +20,11 @@ class RepeatOperatorExample {
      */
     fun executeRepeat() {
         val label = "repeat"
-        val single: Flowable<String> =
+        val flowable: Flowable<String> =
             Flowable.just("A", "B", "C")
                 .repeat(3)
 
-        single.subscribe(DebugSubscriber(label = label))
+        flowable.subscribe(DebugSubscriber(label = label))
         Thread.sleep(2000L)
     }
 }
