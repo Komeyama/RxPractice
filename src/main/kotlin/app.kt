@@ -4,9 +4,7 @@ import operators.conversion.*
 import operators.generation.*
 import operators.restriction.*
 import operators.state.*
-import operators.utility.RepeatOperatorExample
-import operators.utility.RepeatUntilOperatorExample
-import operators.utility.RepeatWhenOperatorExample
+import operators.utility.*
 
 fun main() {
     // データ生成系オペレータ
@@ -71,6 +69,7 @@ fun main() {
     setupRepeatOperatorExample()
     setupRepeatUntilOperatorExample()
     setupRepeatWhenOperatorExample()
+    setupDelayOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -329,4 +328,9 @@ private fun setupRepeatUntilOperatorExample() {
 private fun setupRepeatWhenOperatorExample() {
     val repeatWhenOperatorExample = RepeatWhenOperatorExample()
     repeatWhenOperatorExample.executeRepeatWhen()
+}
+
+private fun setupDelayOperatorExample() {
+    val delayOperatorExample = DelayOperatorExample()
+    delayOperatorExample.executeDelay()
 }
