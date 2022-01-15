@@ -70,6 +70,7 @@ fun main() {
     setupRepeatUntilOperatorExample()
     setupRepeatWhenOperatorExample()
     setupDelayOperatorExample()
+    setupDelaySubscriptionOperatorExample()
 }
 
 private fun setupJustExample() {
@@ -333,4 +334,9 @@ private fun setupRepeatWhenOperatorExample() {
 private fun setupDelayOperatorExample() {
     val delayOperatorExample = DelayOperatorExample()
     delayOperatorExample.executeDelay()
+}
+
+private fun setupDelaySubscriptionOperatorExample() {
+    val delaySubscriptionOperatorExample = DelaySubscriptionOperatorExample()
+    delaySubscriptionOperatorExample.executeDelaySubscription()
 }

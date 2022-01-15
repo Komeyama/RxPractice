@@ -7,24 +7,24 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
-class DelayOperatorExample {
+class DelaySubscriptionOperatorExample {
 
     private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS")
 
     /**
      * [Result]
-     * start subscription time: 01:40.616
-     * start time: 01:40.634
-     * notification time: 01:42.638, data: A
-     * threadName: RxComputationThreadPool-1, time: 01:42.638, data: A
-     * notification time: 01:42.638, data: B
-     * threadName: RxComputationThreadPool-1, time: 01:42.638, data: B
-     * notification time: 01:42.638, data: C
-     * threadName: RxComputationThreadPool-1, time: 01:42.638, data: C
-     * threadName: RxComputationThreadPool-1, time: 01:42.638, completed!
+     * start subscription time: 55:28.240
+     * start time: 55:30.290
+     * notification time: 55:30.290, data: A
+     * threadName: RxComputationThreadPool-1, time: 55:30.290, data: A
+     * notification time: 55:30.291, data: B
+     * threadName: RxComputationThreadPool-1, time: 55:30.291, data: B
+     * notification time: 55:30.291, data: C
+     * threadName: RxComputationThreadPool-1, time: 55:30.291, data: C
+     * threadName: RxComputationThreadPool-1, time: 55:30.291, completed!
      */
-    fun executeDelay() {
-        val label = "delay"
+    fun executeDelaySubscription() {
+        val label = "delay_subscription"
         val flowable: Flowable<String> =
             Flowable.create({ emitter ->
                 val statTime = LocalTime.now().format(formatter)
@@ -35,15 +35,14 @@ class DelayOperatorExample {
                 emitter.onComplete()
             }, BackpressureStrategy.BUFFER)
 
-        val flowableDelay = flowable.delay(2000L, TimeUnit.MILLISECONDS)
-            .doOnNext { data ->
-                val currentTime = LocalTime.now().format(formatter)
-                println("notification time: $currentTime, data: $data")
-            }
 
         val statSubscriptionTime = LocalTime.now().format(formatter)
         println("start subscription time: $statSubscriptionTime")
-        flowableDelay.subscribe(DebugTimeSubscriber(formatter = formatter, label = label))
+        flowable.delaySubscription(2000L, TimeUnit.MILLISECONDS)
+            .doOnNext { data ->
+                val currentTime = LocalTime.now().format(formatter)
+                println("notification time: $currentTime, data: $data")
+            }.subscribe(DebugTimeSubscriber(formatter = formatter, label = label))
 
         Thread.sleep(5000L)
     }
