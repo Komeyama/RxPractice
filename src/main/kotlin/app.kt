@@ -1,3 +1,4 @@
+import coroutines.basic.RunBlocking
 import operators.aggregate.*
 import operators.combine.*
 import operators.conversion.*
@@ -7,6 +8,25 @@ import operators.state.*
 import operators.utility.*
 
 fun main() {
+    setupCoroutines()
+    //setupRx()
+}
+/**
+ * Coroutines
+ */
+private fun setupCoroutines() {
+    setupRunBlocking()
+}
+
+private fun setupRunBlocking() {
+    val runBlocking = RunBlocking()
+    runBlocking.execRunBlocking()
+}
+
+/**
+ * Rx
+ */
+private fun setupRx() {
     // データ生成系オペレータ
     setupJustExample()
     setupFromArrayOperatorExample()
