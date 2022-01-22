@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.komeyama.rxpractice.RxPractice.iml" filepath="$PROJECT_DIR$/.idea/modules/com.komeyama.rxpractice.RxPractice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.komeyama.rxpractice.RxPractice.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.komeyama.rxpractice.RxPractice.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.komeyama.rxpractice.RxPractice.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.komeyama.rxpractice.RxPractice.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RxPractice.iml" filepath="$PROJECT_DIR$/.idea/modules/RxPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RxPractice.main.iml" filepath="$PROJECT_DIR$/.idea/modules/RxPractice.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RxPractice.test.iml" filepath="$PROJECT_DIR$/.idea/modules/RxPractice.test.iml" />
     </modules>
   </component>
 </project>
