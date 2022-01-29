@@ -1,4 +1,4 @@
-import coroutines.basic.RunBlocking
+import coroutines.basic.*
 import operators.aggregate.*
 import operators.combine.*
 import operators.conversion.*
@@ -11,16 +11,23 @@ fun main() {
     setupCoroutines()
     //setupRx()
 }
+
 /**
  * Coroutines
  */
 private fun setupCoroutines() {
-    setupRunBlocking()
+    //setupRunBlocking()
+    setupCoroutinesScope()
 }
 
 private fun setupRunBlocking() {
-    val runBlocking = RunBlocking()
-    runBlocking.execRunBlocking()
+    val runBlockingExample = RunBlockingExample()
+    runBlockingExample.execRunBlocking()
+}
+
+private fun setupCoroutinesScope() {
+    val coroutinesScopeExample = CoroutinesScopeExample()
+    coroutinesScopeExample.execCoroutinesScope()
 }
 
 /**
