@@ -17,7 +17,8 @@ fun main() {
  */
 private fun setupCoroutines() {
     //setupRunBlocking()
-    setupCoroutinesScope()
+    //setupCoroutinesScope()
+    setupJobExample()
 }
 
 private fun setupRunBlocking() {
@@ -28,6 +29,12 @@ private fun setupRunBlocking() {
 private fun setupCoroutinesScope() {
     val coroutinesScopeExample = CoroutinesScopeExample()
     coroutinesScopeExample.execCoroutinesScope()
+}
+
+private fun setupJobExample() {
+    val jobExample = JobExample()
+    jobExample.execJob1()
+    jobExample.execJob2()
 }
 
 /**
