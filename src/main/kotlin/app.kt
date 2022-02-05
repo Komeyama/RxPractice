@@ -18,7 +18,8 @@ fun main() {
 private fun setupCoroutines() {
     //setupRunBlocking()
     //setupCoroutinesScope()
-    setupJobExample()
+    //setupJobExample()
+    setupAsyncExample()
 }
 
 private fun setupRunBlocking() {
@@ -35,6 +36,11 @@ private fun setupJobExample() {
     val jobExample = JobExample()
     jobExample.execJob1()
     jobExample.execJob2()
+}
+
+private fun setupAsyncExample() {
+    val asyncExample = AsyncExample()
+    asyncExample.execAsync()
 }
 
 /**
