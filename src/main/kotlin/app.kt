@@ -19,7 +19,8 @@ private fun setupCoroutines() {
     //setupRunBlocking()
     //setupCoroutinesScope()
     //setupJobExample()
-    setupAsyncExample()
+    //setupAsyncExample()
+    setupSuspendExample()
 }
 
 private fun setupRunBlocking() {
@@ -41,6 +42,11 @@ private fun setupJobExample() {
 private fun setupAsyncExample() {
     val asyncExample = AsyncExample()
     asyncExample.execAsync()
+}
+
+private fun setupSuspendExample() {
+    val suspendExample = SuspendExample()
+    suspendExample.execSuspend()
 }
 
 /**

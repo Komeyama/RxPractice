@@ -38,7 +38,7 @@ class AsyncExample {
             println(
                 "deferred1 + deferred2 = ${deferred1Value + deferred2Value}, time: ${
                     LocalTime.now().format(formatter)
-                }, threadName: $threadName2"
+                }"
             )
         }
     }
