@@ -19,6 +19,7 @@ class CoroutinesScopeExample {
      * c: 20:48.613, threadName: DefaultDispatcher-worker-2
      */
     fun execCoroutinesScope() {
+        // 複数のバックグラウンドスレッドのうち一つ
         val scope = CoroutineScope(EmptyCoroutineContext)
 
         val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("mm:ss.SSS")

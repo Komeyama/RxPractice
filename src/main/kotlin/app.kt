@@ -1,4 +1,5 @@
 import coroutines.basic.*
+import coroutines.flow.FlowExample
 import operators.aggregate.*
 import operators.combine.*
 import operators.conversion.*
@@ -20,7 +21,8 @@ private fun setupCoroutines() {
     //setupCoroutinesScope()
     //setupJobExample()
     //setupAsyncExample()
-    setupSuspendExample()
+    //setupSuspendExample()
+    setupFlowExample()
 }
 
 private fun setupRunBlocking() {
@@ -47,6 +49,11 @@ private fun setupAsyncExample() {
 private fun setupSuspendExample() {
     val suspendExample = SuspendExample()
     suspendExample.execSuspend()
+}
+
+private fun setupFlowExample() {
+    val flowExample = FlowExample()
+    flowExample.execFlow1()
 }
 
 /**
