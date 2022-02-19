@@ -54,7 +54,8 @@ private fun setupSuspendExample() {
 private fun setupFlowExample() {
     val flowExample = FlowExample()
 //    flowExample.execFlow1()
-    flowExample.execFlow2()
+//    flowExample.execFlow2()
+    flowExample.execFlowMap()
 }
 
 /**

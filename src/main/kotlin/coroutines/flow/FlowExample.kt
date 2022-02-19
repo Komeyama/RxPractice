@@ -1,8 +1,8 @@
 package coroutines.flow
 
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.LocalTime
@@ -75,13 +75,32 @@ class FlowExample {
 
         runBlocking {
             val threadName = Thread.currentThread().name
-            flow
-                .catch {
-                    println("catch:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
-                }
-                .collect {
-                    println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
-                }
+            flow.catch {
+                println("catch:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+        }
+    }
+
+    /**
+     * collect:2, 06:43.711, threadName: main
+     * collect:4, 06:44.719, threadName: main
+     * collect:6, 06:45.729, threadName: main
+     * collect:8, 06:46.740, threadName: main
+     * collect:10, 06:47.748, threadName: main
+     */
+    fun execFlowMap() {
+        val flow = flowOf(1, 2, 3, 4, 5).map {
+            delay(1000L)
+            it * 2
+        }
+
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
         }
     }
 }
