@@ -103,4 +103,22 @@ class FlowExample {
             }
         }
     }
+
+    /**
+     * collect:2, 25:09.060, threadName: main
+     * collect:4, 25:11.067, threadName: main
+     */
+    fun execFlowFilter() {
+        val flow = flowOf(1, 2, 3, 4, 5).filter {
+            delay(1000L)
+            it % 2 == 0
+        }
+
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+        }
+    }
 }

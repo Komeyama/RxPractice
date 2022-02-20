@@ -55,7 +55,8 @@ private fun setupFlowExample() {
     val flowExample = FlowExample()
 //    flowExample.execFlow1()
 //    flowExample.execFlow2()
-    flowExample.execFlowMap()
+//    flowExample.execFlowMap()
+    flowExample.execFlowFilter()
 }
 
 /**
