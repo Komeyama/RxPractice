@@ -7,6 +7,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.util.concurrent.TimeUnit
 
 class FlowExample {
 
@@ -119,6 +120,29 @@ class FlowExample {
             flow.collect {
                 println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
             }
+        }
+    }
+
+    /**
+     * collect:1, 34:02.531, threadName: main
+     * collect:2, 34:03.537, threadName: main
+     * collect:3, 34:04.539, threadName: main
+     * collect:4, 34:05.541, threadName: main
+     * collect:5, 34:06.547, threadName: main
+     * finish!:  34:06.547
+     */
+    fun execFlowDistinctUntilChanged() {
+        val flow = flowOf(1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 5, 5, 5, 5).distinctUntilChanged().filter {
+            delay(1000L)
+            true
+        }
+
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
         }
     }
 }
