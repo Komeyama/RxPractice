@@ -1,5 +1,6 @@
 package coroutines.flow
 
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.catch
@@ -311,6 +312,72 @@ class FlowExample {
                     delay(2000L)
                 }
             println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
+
+    /**
+     * start!:  24:38.692
+     * emit:1, 24:38.705, threadName: main
+     * start!:  24:38.716
+     * emit:1, 24:38.716, threadName: main
+     * collect(DROP_OLDEST):1, 24:38.717, threadName: main
+     * collect(DROP_LATEST):1, 24:38.718, threadName: main
+     * emit:2, 24:39.717, threadName: main
+     * emit:2, 24:39.717, threadName: main
+     * emit:3, 24:40.723, threadName: main
+     * collect(DROP_OLDEST):3, 24:40.723, threadName: main <= collectは前回のcollectから最新のemitのデータを取得する。（古いデータから消していく）
+     * emit:3, 24:40.723, threadName: main
+     * collect(DROP_LATEST):2, 24:40.724, threadName: main <= collectは前回のcollectから最も古いemitのデータを取得する。（新しいデータを消していく）
+     * emit:4, 24:41.725, threadName: main
+     * emit:4, 24:41.726, threadName: main
+     * collect(DROP_OLDEST):4, 24:42.724, threadName: main
+     * collect(DROP_LATEST):4, 24:42.725, threadName: main
+     * emit:5, 24:42.726, threadName: main
+     * emit:5, 24:42.727, threadName: main
+     * collect(DROP_OLDEST):5, 24:44.729, threadName: main
+     * collect(DROP_LATEST):5, 24:44.729, threadName: main
+     * finish!(DROP_OLDEST):  24:46.735
+     * finish!(DROP_LATEST:  24:46.735
+     */
+    fun execFlowBufferOption() {
+        val flow = flow {
+            println("start!:  ${LocalTime.now().format(formatter)}")
+            (1..5).forEach {
+                val threadName = Thread.currentThread().name
+                println("emit:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+                emit(it)
+                delay(1000L)
+            }
+        }
+
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            launch {
+                flow
+                    .buffer(1, BufferOverflow.DROP_OLDEST)
+                    .collect {
+                        println(
+                            "collect(DROP_OLDEST):$it, ${
+                                LocalTime.now().format(formatter)
+                            }, threadName: $threadName"
+                        )
+                        delay(2000L)
+                    }
+                println("finish!(DROP_OLDEST):  ${LocalTime.now().format(formatter)}")
+            }
+            launch {
+                flow
+                    .buffer(1, BufferOverflow.DROP_LATEST)
+                    .collect {
+                        println(
+                            "collect(DROP_LATEST):$it, ${
+                                LocalTime.now().format(formatter)
+                            }, threadName: $threadName"
+                        )
+                        delay(2000L)
+                    }
+                println("finish!(DROP_LATEST:  ${LocalTime.now().format(formatter)}")
+            }
         }
     }
 }
