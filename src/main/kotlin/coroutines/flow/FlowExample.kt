@@ -227,4 +227,90 @@ class FlowExample {
             println("finish!:  ${LocalTime.now().format(formatter)}")
         }
     }
+
+    /**
+     * start!:  09:33.048
+     * emit:1, 09:33.055, threadName: main
+     * onEach:1, 09:33.067, threadName: main
+     * collect:1, 09:33.067, threadName: main
+     * emit:2, 09:36.080, threadName: main <= emitもcollectのdelay(2000)に影響を受ける（計約3000s待機してからemitすることになる）
+     * onEach:2, 09:36.080, threadName: main
+     * collect:2, 09:36.080, threadName: main
+     * emit:3, 09:39.083, threadName: main
+     * onEach:3, 09:39.083, threadName: main
+     * collect:3, 09:39.083, threadName: main
+     * emit:4, 09:42.090, threadName: main
+     * onEach:4, 09:42.090, threadName: main
+     * collect:4, 09:42.090, threadName: main
+     * emit:5, 09:45.100, threadName: main
+     * onEach:5, 09:45.100, threadName: main
+     * collect:5, 09:45.100, threadName: main
+     * finish!:  09:48.107
+     */
+    fun execFlowNotBuffer() {
+        val flow = flow {
+            println("start!:  ${LocalTime.now().format(formatter)}")
+            (1..5).forEach {
+                val threadName = Thread.currentThread().name
+                println("emit:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+                emit(it)
+                delay(1000L)
+            }
+        }
+
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.onEach {
+                println("onEach:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+                delay(2000L)
+            }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
+
+    /**
+     * start!:  16:41.009
+     * emit:1, 16:41.016, threadName: main
+     * onEach:1, 16:41.024, threadName: main
+     * collect:1, 16:41.031, threadName: main
+     * emit:2, 16:42.033, threadName: main <= emitはcollectのdelay(2000)に影響を受けない（約1000sに1回emitする）
+     * onEach:2, 16:42.033, threadName: main <= onEachはcollectのdelay(2000)に影響を受けない（約1000sに1回onEachする）
+     * collect:2, 16:43.032, threadName: main <= collectは約2000sに1回データを受け取る
+     * emit:3, 16:43.034, threadName: main
+     * onEach:3, 16:43.034, threadName: main
+     * emit:4, 16:44.037, threadName: main
+     * onEach:4, 16:44.037, threadName: main
+     * collect:3, 16:45.036, threadName: main
+     * emit:5, 16:45.038, threadName: main
+     * onEach:5, 16:45.039, threadName: main
+     * collect:4, 16:47.037, threadName: main
+     * collect:5, 16:49.042, threadName: main
+     * finish!:  16:51.050
+     */
+    fun execFlowBuffer() {
+        val flow = flow {
+            println("start!:  ${LocalTime.now().format(formatter)}")
+            (1..5).forEach {
+                val threadName = Thread.currentThread().name
+                println("emit:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+                emit(it)
+                delay(1000L)
+            }
+        }
+
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow
+                .onEach {
+                    println("onEach:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+                }.buffer(5)
+                .collect {
+                    println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+                    delay(2000L)
+                }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
 }
