@@ -203,4 +203,28 @@ class FlowExample {
             println("finish!:  ${LocalTime.now().format(formatter)}")
         }
     }
+
+    /**
+     * collect:0, 04:40.233, threadName: main
+     * collect:1, 04:40.236, threadName: main
+     * collect:3, 04:40.236, threadName: main
+     * collect:6, 04:40.236, threadName: main
+     * collect:10, 04:40.236, threadName: main
+     * collect:15, 04:40.236, threadName: main
+     * collect:21, 04:40.236, threadName: main
+     * collect:28, 04:40.236, threadName: main
+     * collect:36, 04:40.236, threadName: main
+     * collect:45, 04:40.236, threadName: main
+     * collect:55, 04:40.237, threadName: main
+     */
+    fun execFlowScan() {
+        val flow = flowOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).scan(0) { sum, v -> sum + v }
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
 }
