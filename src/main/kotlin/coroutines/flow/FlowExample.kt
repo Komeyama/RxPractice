@@ -155,7 +155,7 @@ class FlowExample {
      * finish!:  45:48.887
      */
     fun execFlowDrop() {
-        val flow = flowOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).distinctUntilChanged().drop(5)
+        val flow = flowOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).drop(5)
         runBlocking {
             val threadName = Thread.currentThread().name
             flow.collect {
@@ -174,7 +174,27 @@ class FlowExample {
      * finish!:  48:48.213
      */
     fun execFlowTake() {
-        val flow = flowOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).distinctUntilChanged().take(5)
+        val flow = flowOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).take(5)
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
+
+    /**
+     * collect:2 <= element:1 * 2, 57:47.553, threadName: main
+     * collect:4 <= element:2 * 2, 57:47.555, threadName: main
+     * collect:6 <= element:3 * 2, 57:47.555, threadName: main
+     * collect:8 <= element:4 * 2, 57:47.555, threadName: main
+     * collect:10 <= element:5 * 2, 57:47.555, threadName: main
+     */
+    fun execFlowTransform() {
+        val flow = flowOf(1, 2, 3, 4, 5).transform {
+            emit("${it * 2} <= element:$it * 2")
+        }
         runBlocking {
             val threadName = Thread.currentThread().name
             flow.collect {

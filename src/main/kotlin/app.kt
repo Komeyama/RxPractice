@@ -59,7 +59,8 @@ private fun setupFlowExample() {
 //    flowExample.execFlowFilter()
 //    flowExample.execFlowDistinctUntilChanged()
 //    flowExample.execFlowDrop()
-    flowExample.execFlowTake()
+//    flowExample.execFlowTake()
+    flowExample.execFlowTransform()
 }
 
 /**
