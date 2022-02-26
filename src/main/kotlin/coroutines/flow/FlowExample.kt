@@ -145,4 +145,23 @@ class FlowExample {
             println("finish!:  ${LocalTime.now().format(formatter)}")
         }
     }
+
+    /**
+     * collect:6, 45:48.884, threadName: main
+     * collect:7, 45:48.887, threadName: main
+     * collect:8, 45:48.887, threadName: main
+     * collect:9, 45:48.887, threadName: main
+     * collect:10, 45:48.887, threadName: main
+     * finish!:  45:48.887
+     */
+    fun execFlowDrop() {
+        val flow = flowOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).distinctUntilChanged().drop(5)
+        runBlocking {
+            val threadName = Thread.currentThread().name
+            flow.collect {
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
 }
