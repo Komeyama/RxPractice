@@ -1,5 +1,6 @@
 package coroutines.flow
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -9,6 +10,7 @@ import kotlinx.coroutines.runBlocking
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.EmptyCoroutineContext
 
 class FlowExample {
 
@@ -436,5 +438,31 @@ class FlowExample {
             }
             println("finish!:  ${LocalTime.now().format(formatter)}")
         }
+    }
+
+    /**
+     * emit:1, 33:34.292, threadName: DefaultDispatcher-worker-1
+     * onEach: 1, 33:34.302, threadName: DefaultDispatcher-worker-1
+     * emit:2, 33:35.308, threadName: DefaultDispatcher-worker-1
+     * onEach: 2, 33:35.308, threadName: DefaultDispatcher-worker-1
+     */
+    fun expLaunchIn() {
+        val scope = CoroutineScope(EmptyCoroutineContext)
+        val flow = flow {
+            val threadName = Thread.currentThread().name
+            println("emit:1, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            emit(1)
+            delay(1000L)
+            println("emit:2, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            emit(2)
+        }
+
+        flow.onEach {
+            val threadName = Thread.currentThread().name
+            println("onEach: $it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+        }.launchIn(scope)
+
+        // runBlockingと違い待機処理が必要。
+        Thread.sleep(2000L)
     }
 }

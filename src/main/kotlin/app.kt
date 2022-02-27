@@ -65,7 +65,8 @@ private fun setupFlowExample() {
 //    flowExample.execFlowNotBuffer()
 //    flowExample.execFlowBuffer()
 //    flowExample.execFlowBufferOption()
-    flowExample.execCombinedFlows()
+//    flowExample.execCombinedFlows()
+    flowExample.expLaunchIn()
 }
 
 /**
