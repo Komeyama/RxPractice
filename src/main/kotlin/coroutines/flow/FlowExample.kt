@@ -380,4 +380,61 @@ class FlowExample {
             }
         }
     }
+
+    /**
+     * emit:1, 24:04.438, threadName: main
+     * emit:3, 24:04.954, threadName: main
+     * combined: 1(f1) + 3(f2), 24:04.954, threadName: main
+     * collect:4, 24:04.954, threadName: main
+     * emit:2, 24:05.458, threadName: main
+     * combined: 2(f1) + 3(f2), 24:05.459, threadName: main
+     * collect:5, 24:05.459, threadName: main
+     * emit:4, 24:06.457, threadName: main
+     * combined: 2(f1) + 4(f2), 24:06.458, threadName: main
+     * collect:6, 24:06.458, threadName: main
+     * combined: 2(f1) + 5(f2), 24:07.464, threadName: main
+     * collect:7, 24:07.464, threadName: main
+     * combined: 2(f1) + 6(f2), 24:08.466, threadName: main
+     * collect:8, 24:08.466, threadName: main
+     * finish!:  24:09.474
+     */
+    fun execCombinedFlows() {
+        val flow1 = flow {
+            val threadName = Thread.currentThread().name
+            println("emit:1, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            emit(1)
+            delay(1000L)
+            println("emit:2, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            emit(2)
+        }
+
+        val flow2 = flow {
+            val threadName = Thread.currentThread().name
+            delay(500L)
+            println("emit:3, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            emit(3)
+            delay(1500L)
+            println("emit:4, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            emit(4)
+            delay(1000L)
+            emit(5)
+            delay(1000L)
+            emit(6)
+            delay(1000L)
+        }
+
+        val combined = combine(flow1, flow2) { f1, f2 ->
+            val threadName = Thread.currentThread().name
+            println("combined: $f1(f1) + $f2(f2), ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            f1 + f2
+        }
+
+        runBlocking {
+            combined.collect {
+                val threadName = Thread.currentThread().name
+                println("collect:$it, ${LocalTime.now().format(formatter)}, threadName: $threadName")
+            }
+            println("finish!:  ${LocalTime.now().format(formatter)}")
+        }
+    }
 }
