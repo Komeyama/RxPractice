@@ -1,5 +1,6 @@
 import coroutines.basic.*
 import coroutines.flow.FlowExample
+import coroutines.flow.ShardFlowExample
 import operators.aggregate.*
 import operators.combine.*
 import operators.conversion.*
@@ -22,7 +23,8 @@ private fun setupCoroutines() {
     //setupJobExample()
     //setupAsyncExample()
     //setupSuspendExample()
-    setupFlowExample()
+    //setupFlowExample()
+    setupShardFlowExample()
 }
 
 private fun setupRunBlocking() {
@@ -67,6 +69,11 @@ private fun setupFlowExample() {
 //    flowExample.execFlowBufferOption()
 //    flowExample.execCombinedFlows()
     flowExample.expLaunchIn()
+}
+
+private fun setupShardFlowExample() {
+    val shardFlowExample = ShardFlowExample()
+    shardFlowExample.execSharedFlow()
 }
 
 /**
