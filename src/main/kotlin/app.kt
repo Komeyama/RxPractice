@@ -73,7 +73,8 @@ private fun setupFlowExample() {
 
 private fun setupShardFlowExample() {
     val shardFlowExample = ShardFlowExample()
-    shardFlowExample.execSharedFlow()
+    //shardFlowExample.execSharedFlow()
+    shardFlowExample.execSharedFlowRelay()
 }
 
 /**
