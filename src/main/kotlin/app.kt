@@ -1,6 +1,7 @@
 import coroutines.basic.*
 import coroutines.flow.FlowExample
 import coroutines.flow.ShardFlowExample
+import coroutines.flow.StateFlowExample
 import operators.aggregate.*
 import operators.combine.*
 import operators.conversion.*
@@ -24,7 +25,8 @@ private fun setupCoroutines() {
     //setupAsyncExample()
     //setupSuspendExample()
     //setupFlowExample()
-    setupShardFlowExample()
+    //setupShardFlowExample()
+    setupStateFlowExample()
 }
 
 private fun setupRunBlocking() {
@@ -75,6 +77,12 @@ private fun setupShardFlowExample() {
     val shardFlowExample = ShardFlowExample()
     //shardFlowExample.execSharedFlow()
     shardFlowExample.execSharedFlowRelay()
+}
+
+private fun setupStateFlowExample() {
+    val stateFlowExample = StateFlowExample()
+    //stateFlowExample.execStateFlowNotExistDelay()
+    stateFlowExample.execStateFlowExistDelay()
 }
 
 /**
